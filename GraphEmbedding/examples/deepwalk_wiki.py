@@ -45,6 +45,10 @@ if __name__ == "__main__":
     G = nx.read_edgelist('../data/wiki/Wiki_edgelist.txt',
                          create_using=nx.DiGraph(), nodetype=None, data=[('weight', int)])
 
+    nx.draw(G,node_size=10, font_size=10, font_color="blue", font_weight="bold")
+    plt.show()
+   # print(G)
+
     model = DeepWalk(G, walk_length=10, num_walks=80, workers=1)
     model.train(window_size=5, iter=3)
     embeddings = model.get_embeddings()
